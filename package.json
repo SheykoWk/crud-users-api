@@ -1,0 +1,56 @@
+{
+  "name": "express-skeleton",
+  "version": "1.0.0",
+  "description": "Node.js + Express + PostgreSQL skeleton application",
+  "main": "./src/app.js",
+  "scripts": {
+    "start": "node ./src/app.js",
+    "dev": "nodemon ./src/app.js",
+    "test": "./node_modules/.bin/mocha ./src/**/test/*.test.js",
+    "eslint": "eslint --ignore-path .gitignore .",
+    "prettier": "prettier --write '**/*.js' --ignore-path .gitignore ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SheykoWk/Express-Skeleton.git"
+  },
+  "keywords": [
+    "REST",
+    "API",
+    "Node.js",
+    "Express",
+    "Skeleton"
+  ],
+  "author": "Sh3yk0",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SheykoWk/Express-Skeleton/issues"
+  },
+  "homepage": "https://github.com/SheykoWk/Express-Skeleton#readme",
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.2",
+    "express": "^4.18.1",
+    "express-rate-limit": "^6.6.0",
+    "jsonwebtoken": "^8.5.1",
+    "morgan": "^1.10.0",
+    "passport": "^0.6.0",
+    "passport-jwt": "^4.0.0",
+    "pg": "^8.8.0",
+    "pg-hstore": "^2.3.4",
+    "sequelize": "^6.23.2",
+    "swagger-ui-express": "^4.5.0",
+    "uuid": "^9.0.0"
+  },
+  "devDependencies": {
+    "chai": "^4.3.6",
+    "chai-http": "^4.3.0",
+    "eslint": "^8.24.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "mocha": "^10.0.0",
+    "nodemon": "^2.0.20",
+    "prettier": "^2.7.1"
+  }
+}
