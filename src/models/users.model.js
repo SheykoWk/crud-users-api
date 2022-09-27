@@ -1,6 +1,7 @@
 const { DataTypes } = require('sequelize')
 
 const { db } = require('../utils/database')
+const Roles = require('./roles.model')
 
 const Users = db.define('users', {
     id: {
@@ -44,9 +45,14 @@ const Users = db.define('users', {
         type: DataTypes.DATEONLY,
         field: 'birthday_date'
     },
-    role: {
+    roleId: {
         allowNull: false,
-        type: DataTypes.UUID
+        type: DataTypes.UUID,
+        field: 'role_id',
+        references: {
+            model: Roles,
+            key: 'id'
+        }
     },
     profileImage: {
         type: DataTypes.STRING,
@@ -74,7 +80,7 @@ const Users = db.define('users', {
         type: DataTypes.DATE,
         allowNull: false,
         field: 'updated_at'
-    }
+    } 
 })
 
 module.exports = Users
