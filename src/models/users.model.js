@@ -1,7 +1,7 @@
-const { DataTypes } = require('sequelize')
+const { DataTypes } = require('sequelize');
 
-const { db } = require('../utils/database')
-const Roles = require('./roles.model')
+const { db } = require('../utils/database');
+const Roles = require('./roles.model');
 
 const Users = db.define('users', {
     id: {
@@ -12,24 +12,24 @@ const Users = db.define('users', {
     firstName: {
         allowNull: false,
         type: DataTypes.STRING,
-        field: 'first_name'
+        field: 'first_name',
     },
     lastName: {
         allowNull: false,
         type: DataTypes.STRING,
-        field: 'last_name'
+        field: 'last_name',
     },
     gender: {
         type: DataTypes.STRING,
-        allowNull: false
+        allowNull: false,
     },
     email: {
         allowNull: false,
         type: DataTypes.STRING(30),
         unique: true,
         validate: {
-            isEmail: true
-        }
+            isEmail: true,
+        },
     },
     password: {
         allowNull: false,
@@ -38,12 +38,11 @@ const Users = db.define('users', {
     phone: {
         allowNull: false,
         type: DataTypes.STRING,
-
     },
     birthdayDate: {
         allowNull: false,
         type: DataTypes.DATEONLY,
-        field: 'birthday_date'
+        field: 'birthday_date',
     },
     roleId: {
         allowNull: false,
@@ -51,36 +50,36 @@ const Users = db.define('users', {
         field: 'role_id',
         references: {
             model: Roles,
-            key: 'id'
-        }
+            key: 'id',
+        },
     },
     profileImage: {
         type: DataTypes.STRING,
         validate: {
-            isUrl: true
+            isUrl: true,
         },
-        field: 'profile_image'
+        field: 'profile_image',
     },
     status: {
         allowNull: false,
         type: DataTypes.STRING,
-        defaultValue: 'active' //active, non-active, deleted, suspended
+        defaultValue: 'active', //active, non-active, deleted, suspended
     },
     verified: {
         allowNull: false,
         type: DataTypes.BOOLEAN,
-        defaultValue: false
+        defaultValue: false,
     },
     createdAt: {
         type: DataTypes.DATE,
         allowNull: false,
-        field: 'created_at'
+        field: 'created_at',
     },
     updatedAt: {
         type: DataTypes.DATE,
         allowNull: false,
-        field: 'updated_at'
-    } 
-})
+        field: 'updated_at',
+    },
+});
 
-module.exports = Users
+module.exports = Users;
