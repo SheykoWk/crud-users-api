@@ -1,7 +1,6 @@
 const { DataTypes } = require('sequelize');
 
 const { db } = require('../utils/database');
-const Roles = require('./roles.model');
 
 const Users = db.define('users', {
     id: {
@@ -19,10 +18,6 @@ const Users = db.define('users', {
         type: DataTypes.STRING,
         field: 'last_name',
     },
-    gender: {
-        type: DataTypes.STRING,
-        allowNull: false,
-    },
     email: {
         allowNull: false,
         type: DataTypes.STRING(30),
@@ -35,40 +30,9 @@ const Users = db.define('users', {
         allowNull: false,
         type: DataTypes.STRING,
     },
-    phone: {
-        allowNull: false,
-        type: DataTypes.STRING,
-    },
-    birthdayDate: {
+    birthday: {
         allowNull: false,
         type: DataTypes.DATEONLY,
-        field: 'birthday_date',
-    },
-    roleId: {
-        allowNull: false,
-        type: DataTypes.UUID,
-        field: 'role_id',
-        references: {
-            model: Roles,
-            key: 'id',
-        },
-    },
-    profileImage: {
-        type: DataTypes.STRING,
-        validate: {
-            isUrl: true,
-        },
-        field: 'profile_image',
-    },
-    status: {
-        allowNull: false,
-        type: DataTypes.STRING,
-        defaultValue: 'active', //active, non-active, deleted, suspended
-    },
-    verified: {
-        allowNull: false,
-        type: DataTypes.BOOLEAN,
-        defaultValue: false,
     },
     createdAt: {
         type: DataTypes.DATE,
