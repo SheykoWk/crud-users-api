@@ -27,33 +27,21 @@ const getUserById = async (id) => {
 };
 
 const createUser = async (data) => {
-    const normalRole = await Roles.findOne({ where: { name: 'normal' } });
-    if (normalRole) {
-        const newUser = await Users.create({
-            id: uuid.v4(),
-            firstName: data.first_name,
-            lastName: data.last_name,
-            email: data.email,
-            gender: data.gender,
-            password: hashPassword(data.password),
-            phone: data.phone,
-            birthdayDate: data.birthday_date,
-            roleId: normalRole.id,
-            profileImage: data.profile_image,
-            country: data.country,
-            status: 'active',
-            verified: false,
-        });
-        return newUser;
-    }
-    return null;
+    const newUser = await Users.create({
+        id: uuid.v4(),
+        first_name: data.first_name,
+        last_name: data.last_name,
+        email: data.email,
+        password: hashPassword(data.password),
+        birthday: data.birthday
+    });
+    return newUser;
 };
 const editUser = async (userId, data) => {
-    const { id, password, verified, role_id, ...restOfProperties } = data;
-    const response = await Users.update(restOfProperties, {
-        where: { id: userId },
-    });
-    return response;
+    const { id,  ...restOfProperties } = data;
+    const user = await Users.findOne({ where: { id: userId } });
+    await user.update(restOfProperties);
+    return user;
 };
 
 const deleteUser = async (id) => {

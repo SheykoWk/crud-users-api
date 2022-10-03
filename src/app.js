@@ -1,6 +1,6 @@
 //* Dependencies
 const express = require('express');
-const cors = require('cors');
+//const cors = require('cors');
 const rateLimit = require('express-rate-limit');
 const swaggerUi = require('swagger-ui-express')
 
@@ -24,7 +24,7 @@ const limiter = rateLimit({
 
 app.use(limiter);
 //? Enable CORS
-app.use(cors());
+//app.use(cors());
 //? Enable incoming JSON data
 app.use(express.json());
 //? Enable incoming form-urlencoded data

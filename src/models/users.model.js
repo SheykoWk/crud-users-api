@@ -8,15 +8,13 @@ const Users = db.define('users', {
         type: DataTypes.UUID,
         allowNull: false,
     },
-    firstName: {
+    first_name: {
         allowNull: false,
         type: DataTypes.STRING,
-        field: 'first_name',
     },
-    lastName: {
+    last_name: {
         allowNull: false,
         type: DataTypes.STRING,
-        field: 'last_name',
     },
     email: {
         allowNull: false,

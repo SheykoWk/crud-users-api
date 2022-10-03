@@ -1,22 +1,22 @@
 {
     "swagger": "2.0",
     "info": {
-        "title": "Snippets API",
-        "description": "Test description",
+        "title": "Users API",
+        "description": "Users CRUD full REST API",
         "termsOfService": "https://www.google.com/policies/terms/",
         "contact": {
-            "email": "contact@snippets.local"
+            "email": "sheyko.wk@gmail.com"
         },
         "license": {
             "name": "BSD License"
         },
-        "version": "v1"
+        "version": "1.0.0"
     },
-    "host": "users-crud1.herokuapp.com",
+    "host": "localhost:8000",
     "schemes": [
-        "https"
+        "http"
     ],
-    "basePath": "/",
+    "basePath": "/api/v1",
     "consumes": [
         "application/json"
     ],
@@ -69,10 +69,13 @@
                 ],
                 "responses": {
                     "201": {
-                        "description": "",
+                        "description": "User created succesfully",
                         "schema": {
                             "$ref": "#/definitions/User"
                         }
+                    },
+                    "400":{
+                        "description": "Missing Data"                        
                     }
                 },
                 "tags": [
@@ -92,6 +95,9 @@
                         "schema": {
                             "$ref": "#/definitions/User"
                         }
+                    },
+                    "404": {
+                        "description": "Invalid ID"
                     }
                 },
                 "tags": [
@@ -123,38 +129,16 @@
                     "users"
                 ]
             },
-            "patch": {
-                "operationId": "users_partial_update",
-                "description": "",
-                "parameters": [
-                    {
-                        "name": "data",
-                        "in": "body",
-                        "required": true,
-                        "schema": {
-                            "$ref": "#/definitions/User"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "",
-                        "schema": {
-                            "$ref": "#/definitions/User"
-                        }
-                    }
-                },
-                "tags": [
-                    "users"
-                ]
-            },
             "delete": {
                 "operationId": "users_delete",
                 "description": "",
                 "parameters": [],
                 "responses": {
                     "204": {
-                        "description": ""
+                        "description": "User Deleted succesfully"
+                    },
+                    "400": {
+                        "description": "Invalid ID"
                     }
                 },
                 "tags": [
@@ -167,7 +151,7 @@
                     "in": "path",
                     "description": "A unique integer value identifying this custom user.",
                     "required": true,
-                    "type": "integer"
+                    "type": "string"
                 }
             ]
         }
@@ -184,7 +168,7 @@
             "properties": {
                 "id": {
                     "title": "ID",
-                    "type": "integer",
+                    "type": "string",
                     "readOnly": true
                 },
                 "email": {
